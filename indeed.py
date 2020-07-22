@@ -15,7 +15,7 @@ def get_last_page():
     pages.append(int(link.string))
   max_page = pages[-1]
   return max_page
-
+  
 def get_jobs(result):
     title = result.find("h2", {"class" : "title"}).find("a")["title"]
     company = result.find("span", {"class" : "company"})
@@ -32,7 +32,7 @@ def get_jobs(result):
 
 def extract_jobs(last_pages):
   jobs = []
-  for page in range(last_pages):
+  for page in range(1):
     print(f"Scrapping page {page}")
     result = requests.get(f"{URL}&start={page*LIMIT}")
     soup = BeautifulSoup(result.text, "html.parser")
